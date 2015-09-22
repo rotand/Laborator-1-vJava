@@ -62,13 +62,12 @@ int main (){
 
 				break;
 			case 2:
-				int Inceput1, Sfirshit1, contor1;
+				int Inceput1, Sfirshit1;
 				cout << "\nDati inceputul intervalului: \t";
 				cin >> Inceput1;
 				cout << "\nDati Sfirsitul intervalului: \t";
 				cin >> Sfirshit1;
-				contor = Interval(Inceput1, Sfirshit1);
-				cout << "\n In total " << contor << " numere\n";
+				cout << "\n In total " << Interval(Inceput1, Sfirshit1) << " numere\n";
 					
 				_getch();
 				break;
