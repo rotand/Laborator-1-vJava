@@ -8,8 +8,7 @@ bool Prim(int number){
 	for(int i = 2; i <= number/2; i++)
 		if(number % i == 0)
 			return false;
-		else 
-			return true;
+	return true;
 
 }
 int InversPrim(int value){
@@ -60,17 +59,17 @@ int main (){
 					cout << " \t\n Numarul Inversat este Prim\n\n\n";
 				else
 					cout << " \t\n Numarul Inversat NU este Prim\n\n\n";
-				_getch();
+
 				break;
 			case 2:
-				int Inceput1, Sfirshit1, contor;
+				int Inceput1, Sfirshit1, contor1;
 				cout << "\nDati inceputul intervalului: \t";
 				cin >> Inceput1;
 				cout << "\nDati Sfirsitul intervalului: \t";
 				cin >> Sfirshit1;
-				int Interval(int Inceput1, int Sfirshit1);
+				contor = Interval(Inceput1, Sfirshit1);
 				cout << "\n In total " << contor << " numere\n";
-
+					
 				_getch();
 				break;
 			case 3:
