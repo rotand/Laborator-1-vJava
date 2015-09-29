@@ -1,42 +1,19 @@
-#include<iostream>
-#include<conio.h>
-#include<iomanip>
-
+#include <iostream>
+#include <conio.h>
+#include <iomanip>
+#define MAXINT 2147483647 
 using namespace std;
-
-bool Prim(int number){
-	for(int i = 2; i <= number/2; i++)
-		if(number % i == 0)
-			return false;
-	return true;
-
-}
-int InversPrim(int value){
-	int result = 0;
-	while(value > 0){
-		result = result * 10 + value % 10;
-		value /= 10;
-	}
-	
-	return result;
-
-}
-int Interval(int Inceput, int Sfirshit){
-	int numar, contor;
-	for(numar = Inceput,contor = 0; numar <= Sfirshit; numar++)
-	{
-		if (Prim(InversPrim(numar)))
-		{
-			cout << setw(8) << numar;
-			contor ++;
-		}
-	}
-	return contor;
-}
-
+bool Prim(int number);
+int Invers(int value);
+bool InversPrim(int number);
+int Interval(int Inceput, int Sfirshit);
+int PrimeleNr(int Total);
+int MinimPrimInvers(int Inceput, int Sfirshit);
+int MaximPrimInvers(int Inceput, int Sfirshit);
 int main (){
 	int key;
-	int numar;
+	int numar, rez;
+	int Inceput1, Sfirshit1;
 	do
 	{
 
@@ -55,14 +32,13 @@ int main (){
 
 				cout << "\n\nDati un numar intreg:\t";
 				cin >> numar;
-				if(Prim(InversPrim(numar)))
+				if(InversPrim(numar))
 					cout << " \t\n Numarul Inversat este Prim\n\n\n";
 				else
 					cout << " \t\n Numarul Inversat NU este Prim\n\n\n";
 
 				break;
 			case 2:
-				int Inceput1, Sfirshit1;
 				cout << "\nDati inceputul intervalului: \t";
 				cin >> Inceput1;
 				cout << "\nDati Sfirsitul intervalului: \t";
@@ -72,9 +48,26 @@ int main (){
 				_getch();
 				break;
 			case 3:
+				int Total1;
+				cout << "\n Dati nr numereler afisate: \t";
+				cin >> Total1;
+				cout << "\n In total " << PrimeleNr(Total1) << " numere\n";
+				_getch();
 				break;
 			case 4:
-				break;
+				cout << "\nDati inceputul intervalului: \t";
+				cin >> Inceput1;
+				cout << "\nDati Sfirsitul intervalului: \t";
+				cin >> Sfirshit1;
+				rez = MinimPrimInvers(Inceput1, Sfirshit1);
+				if(rez>0) 
+				{
+					cout << "\n Cel mai mic numar prim invers este " << rez;
+					cout << "\n Cel mai mare numar prim invers este " << MaximPrimInvers(Inceput1, Sfirshit1) << ".\n";
+				}
+				else cout << "\n Mu-i numar prim invers pe acest interval"; 
+				_getch();
+			break;
 			case 5:
 				break;
 			case 0:
@@ -85,9 +78,75 @@ int main (){
 		}
 	} while(key);
 		
-	
-
-	
-	getch();
 	return 1;
 }
+bool Prim(int number){
+	for(int i = 2; i <= number/2; i++)
+		if(number % i == 0)
+			return false;
+	return true;
+
+}
+int Invers(int value){
+	int result = 0;
+	while(value > 0){
+		result = result * 10 + value % 10;
+		value /= 10;
+	}
+	
+	return result;
+
+}
+bool InversPrim(int number)
+{
+	if(Prim(number))
+		if(Prim(Invers(number))) return true;
+		else return false;
+	else return false;
+}
+int Interval(int Inceput, int Sfirshit){
+	int numar, contor;
+	for(numar = Inceput,contor = 0; numar <= Sfirshit; numar++)
+	{
+		if (InversPrim(numar))
+		{
+			cout << setw(8) << numar;
+			contor ++;
+		}
+	}
+	return contor;
+}
+int PrimeleNr(int Total)
+{
+	int numar, contor;
+	for(numar = 2, contor = 0; contor < Total; numar++)
+	{
+		if (InversPrim(numar))
+		{
+			cout << setw(8) << numar;
+			contor ++;
+		}
+		if(numar == MAXINT) break;
+	}
+	return contor;
+}
+int MinimPrimInvers(int Inceput, int Sfirshit)
+{
+	bool gasit = false;
+	int numar = Inceput; 
+	while((numar <= Sfirshit) && (!gasit))
+		if (InversPrim(numar)) gasit = true;
+		else numar++;
+	return (gasit)?numar:0;
+}
+int MaximPrimInvers(int Inceput, int Sfirshit)
+{
+	bool gasit = false;
+	int numar = Sfirshit; 
+	while((numar >= Inceput) && (!gasit))
+		if (InversPrim(numar)) gasit = true;
+		else numar--;
+	return (gasit)?numar:0;
+}
+
+
