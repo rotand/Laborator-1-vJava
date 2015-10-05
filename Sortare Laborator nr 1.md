@@ -1,133 +1,78 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package analiza.sortare.pkg1;
+package com.company;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import static java.lang.System.exit;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- *
- * @author A.R
+/*
+1 Realizat o functie care creaza un vector cu introducerea de inceput de vector si sfirshit de vector
+2 Cu case eu aleg ce caz supun verificarii
+3 eu introduc cheea cautata si se afisheaza contorul (cite ori a fost parcurs acest vector)
+4
  */
-public class AnalizaSortare1 {
 
-    /**
-     * @param args the command line arguments
-     */
-    int cautat;
-    
+public class Main {
+
     public static void main(String[] args) throws IOException {
+
+        int inceput, sfirshit, contor = 0;
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Introduceti numarul cautat");
-        String string = reader.readLine();
-        int cautat = Integer.parseInt(string);
-        // TODO code application logic here
-        //Vector cazul neordonat
-        int[] ListNeordonat = new int[10];
-        ListNeordonat[0]= 2;
-        ListNeordonat[1]= 1;
-        ListNeordonat[2]= 3;
-        ListNeordonat[3]= 4;
-        ListNeordonat[4]= 6;
-        ListNeordonat[5]= 5;
-        ListNeordonat[6]= 8;
-        ListNeordonat[7]= 7;
-        ListNeordonat[8]= 10;
-        ListNeordonat[9]= 9;
-        
-         //Vector cazul favorabil
-        int[] ListFavorabil = new int[10];
-        ListFavorabil[0]= 1;
-        ListFavorabil[1]= 2;
-        ListFavorabil[2]= 3;
-        ListFavorabil[3]= 4;
-        ListFavorabil[4]= 5;
-        ListFavorabil[5]= 6;
-        ListFavorabil[6]= 7;
-        ListFavorabil[7]= 8;
-        ListFavorabil[8]= 9;
-        ListFavorabil[9]= 10;
-        
-         //Vector cazul Nefavorabil
-        int[] ListNefavorabil = new int[10];
-        ListNefavorabil[0]= 10;
-        ListNefavorabil[1]= 9;
-        ListNefavorabil[2]= 8;
-        ListNefavorabil[3]= 7;
-        ListNefavorabil[4]= 6;
-        ListNefavorabil[5]= 5;
-        ListNefavorabil[6]= 4;
-        ListNefavorabil[7]= 3;
-        ListNefavorabil[8]= 2;
-        ListNefavorabil[9]= 1;
-        boolean contor = false;
-        int contor2 = 0;
-       
-        // Cazul Favorabil
-        
-        System.out.println("\n\t Organizarea elementelor vectorului pentru cazul Favorabil\n");
-        for (int i = 0; i < ListFavorabil.length; i++) {
-            int j = ListFavorabil[i];
-            if(j == cautat){
-                contor = true;
+        System.out.println("\nIntroduceti operatiea dorita :\t");
+
+        String keyS = reader.readLine();
+        int key = Integer.parseInt(keyS);
+
+
+       // ArrayList<Integer> NeFavorabil = createFavorabil();
+       // ArrayList<Integer> Mediu = createFavorabil();
+
+
+
+        switch (key)
+        {
+            case 1:
+                System.out.println("\n Introduceti Inceputul apoi Sfirsitul Vectorului: \t");
+                ArrayList<Integer> Favorabil = createFavorabil();
+                System.out.println("\nIntroduceti numarul catat:\t");
+                String cautatS = reader.readLine();
+                int cautat = Integer.parseInt(cautatS);
+                for (int i = 0; i < Favorabil.size() ; i++) {
+                    contor++;
+                   if(Favorabil.get(i) == cautat)
+                       System.out.println("Sau parcurs: " + contor + " cautari");
+                }
                 break;
-            }
-            else{
-            contor2++;
-            }
-        }
-        
-            if(contor == true)
-                System.out.println("Numarul: " + cautat + " este in masiv" + 
-                         "\n Au fost efectuate " + contor2 + " cautari");
-            else
-                System.out.println("Numarul dat nu este in masiv" + contor2);
-            contor2 = 0;
-            contor = false;
-         // Verificare cazul Nefavorabil
-        System.out.println("\n\t Organizarea elementelor vectorului pentru cazul Nefavorabil\n");
-        for (int i = 0; i < ListNefavorabil.length; i++) {
-            int j = ListNefavorabil[i];
-            if(j == cautat){
-                contor = true;
+            case 2:
                 break;
-            }
-            else{
-            contor2++;
-            }
-        }
-            if(contor == true)
-                System.out.println("Numarul: " + cautat + " este in masiv" + 
-                         "\n Au fost efectuate " + contor2 + " cautari");
-            else
-                System.out.println("Numarul dat nu este in masiv" + contor2);
-            
-            contor2 = 0;
-            contor = false;
-         //Cazul mediu
-        System.out.println("\n\t Organizarea elementelor vectorului pentru cazul Mediu\n");
-        for (int i = 0; i < ListNeordonat.length; i++) {
-            int j = ListNeordonat[i];
-            if(j == cautat){
-                contor = true;
+            case 3:
                 break;
-            }
-            else{
-            contor2++;
-            }
+            default:
+                break;
         }
-            if(contor == true)
-                System.out.println("Numarul: " + cautat + " este in masiv" + 
-                         "\n Au fost efectuate " + contor2 + " cautari");
-            else
-                System.out.println("Numarul dat nu este in masiv" + contor2);
+
     }
-  
-    
+
+    public static ArrayList<Integer> createFavorabil() throws IOException {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        // Introducerea inceputului vectorului
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String inceputS = reader.readLine();
+        int inceput = Integer.parseInt(inceputS);
+
+        // Introducerea Sfirsitului vectorului
+        String sfirsitS = reader.readLine();
+        int sfirsit = Integer.parseInt(sfirsitS);
+
+        //Inscrierea in vector a nr
+        for (int i = inceput; i < sfirsit; i++) {
+
+            result.add(i);
+
+        }
+            return result;
+    }
 }
