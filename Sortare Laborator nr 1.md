@@ -26,8 +26,8 @@ public class Main {
         int key = Integer.parseInt(keyS);
 
 
-       // ArrayList<Integer> NeFavorabil = createFavorabil();
-       // ArrayList<Integer> Mediu = createFavorabil();
+        // ArrayList<Integer> NeFavorabil = createNeFavorabil();
+        // ArrayList<Integer> Mediu = createFavorabil();
 
 
 
@@ -41,11 +41,21 @@ public class Main {
                 int cautat = Integer.parseInt(cautatS);
                 for (int i = 0; i < Favorabil.size() ; i++) {
                     contor++;
-                   if(Favorabil.get(i) == cautat)
-                       System.out.println("Sau parcurs: " + contor + " cautari");
+                    if(Favorabil.get(i) == cautat)
+                        System.out.println("Sau parcurs: " + contor + " cautari");
                 }
                 break;
             case 2:
+                System.out.println("\n Introduceti Inceputul apoi Sfirsitul Vectorului: \t");
+                ArrayList<Integer> NeFavorabil = createNeFavorabil();
+                System.out.println("\nIntroduceti numarul catat:\t");
+                 cautatS = reader.readLine();
+                 cautat = Integer.parseInt(cautatS);
+                for (int i = 0; i < NeFavorabil.size() ; i++) {
+                    contor++;
+                    if(NeFavorabil.get(i) == cautat)
+                        System.out.println("Sau parcurs: " + contor + " cautari");
+                }
                 break;
             case 3:
                 break;
@@ -54,7 +64,7 @@ public class Main {
         }
 
     }
-
+    //Creem Veector pentru Cazul Favorabil
     public static ArrayList<Integer> createFavorabil() throws IOException {
         ArrayList<Integer> result = new ArrayList<Integer>();
 
@@ -73,6 +83,30 @@ public class Main {
             result.add(i);
 
         }
-            return result;
+        return result;
     }
+
+    //Cream vector pentru cazul nefavorabil
+    public static ArrayList<Integer> createNeFavorabil() throws IOException {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+
+        // Introducerea inceputului vectorului
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String inceputS = reader.readLine();
+        int inceput = Integer.parseInt(inceputS);
+
+        // Introducerea Sfirsitului vectorului
+        String sfirsitS = reader.readLine();
+        int sfirsit = Integer.parseInt(sfirsitS);
+
+        //Inscrierea in vector a nr
+        for (int i = sfirsit; i > inceput; i--) {
+
+            result.add(i);
+
+        }
+        return result;
+    }
+
+    
 }
