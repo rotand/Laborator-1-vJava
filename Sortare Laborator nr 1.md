@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -58,13 +59,26 @@ public class Main {
                 }
                 break;
             case 3:
+                System.out.println("\n Introduceti Inceputul apoi Sfirsitul Vectorului: \t");
+                ArrayList<Integer> Mediu = createFavorabil();
+                // Comanda care randomeaza lista "Collections.shuffle(list);"
+                Collections.shuffle(Mediu);
+                System.out.println(Mediu);
+                System.out.println("\nIntroduceti numarul catat:\t");
+                 cautatS = reader.readLine();
+                 cautat = Integer.parseInt(cautatS);
+                for (int i = 0; i < Mediu.size() ; i++) {
+                    contor++;
+                    if(Mediu.get(i) == cautat)
+                        System.out.println("Sau parcurs: " + contor + " cautari");
+                }
                 break;
             default:
                 break;
         }
 
     }
-    //Creem Veector pentru Cazul Favorabil
+    //Creem Veector pentru Cazul Favorabil si Mediu
     public static ArrayList<Integer> createFavorabil() throws IOException {
         ArrayList<Integer> result = new ArrayList<Integer>();
 
@@ -108,5 +122,5 @@ public class Main {
         return result;
     }
 
-    
+
 }
