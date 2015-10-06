@@ -26,12 +26,6 @@ public class Main {
         String keyS = reader.readLine();
         int key = Integer.parseInt(keyS);
 
-
-        // ArrayList<Integer> NeFavorabil = createNeFavorabil();
-        // ArrayList<Integer> Mediu = createFavorabil();
-
-
-
         switch (key)
         {
             case 1:
@@ -48,7 +42,10 @@ public class Main {
                 break;
             case 2:
                 System.out.println("\n Introduceti Inceputul apoi Sfirsitul Vectorului: \t");
-                ArrayList<Integer> NeFavorabil = createNeFavorabil();
+                ArrayList<Integer> NeFavorabil = createFavorabil();
+                //Comanda ce reverseaza vectorul introdus "Collections.reverse(List);"
+                Collections.reverse(NeFavorabil);
+                System.out.println(NeFavorabil);
                 System.out.println("\nIntroduceti numarul catat:\t");
                  cautatS = reader.readLine();
                  cautat = Integer.parseInt(cautatS);
@@ -66,7 +63,7 @@ public class Main {
                 System.out.println(Mediu);
                 System.out.println("\nIntroduceti numarul catat:\t");
                  cautatS = reader.readLine();
-                 cautat = Integer.parseInt(cautatS);
+                cautat = Integer.parseInt(cautatS);
                 for (int i = 0; i < Mediu.size() ; i++) {
                     contor++;
                     if(Mediu.get(i) == cautat)
@@ -78,7 +75,7 @@ public class Main {
         }
 
     }
-    //Creem Veector pentru Cazul Favorabil si Mediu
+    //Creem Veector pentru Cazul Favorabil si Mediu si Nefavorabil
     public static ArrayList<Integer> createFavorabil() throws IOException {
         ArrayList<Integer> result = new ArrayList<Integer>();
 
@@ -92,35 +89,12 @@ public class Main {
         int sfirsit = Integer.parseInt(sfirsitS);
 
         //Inscrierea in vector a nr
-        for (int i = inceput; i < sfirsit; i++) {
+        for (int i = inceput; i <= sfirsit; i++) {
 
             result.add(i);
 
         }
         return result;
     }
-
-    //Cream vector pentru cazul nefavorabil
-    public static ArrayList<Integer> createNeFavorabil() throws IOException {
-        ArrayList<Integer> result = new ArrayList<Integer>();
-
-        // Introducerea inceputului vectorului
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inceputS = reader.readLine();
-        int inceput = Integer.parseInt(inceputS);
-
-        // Introducerea Sfirsitului vectorului
-        String sfirsitS = reader.readLine();
-        int sfirsit = Integer.parseInt(sfirsitS);
-
-        //Inscrierea in vector a nr
-        for (int i = sfirsit; i > inceput; i--) {
-
-            result.add(i);
-
-        }
-        return result;
-    }
-
 
 }
