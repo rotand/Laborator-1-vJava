@@ -33,7 +33,7 @@ int main()
 			switch(key)
 			{
 			case 1:
-				//dim = Cititre(tabel);
+				dim = Cititre(tabel);
 				Afisare(dim, tabel, "initial");
 				cout << "\nCel mai mare numar este: " << Maximum(dim, tabel);
 				cout << "\nCel mai mic numar este: " << Minimum(dim, tabel);
@@ -71,8 +71,12 @@ void Afisare(int n, int a[], char sir[])
 	cout << endl;	
 }
 int Cititre(int a[])
-{
-
+{	int n;
+	cout << "Dati dimensiunea:";
+	cin >> n;
+	cout << "Dati elementele" << endl;
+	for(int i = 0; i < n ; i++)
+		cin >> a[i];
 return 1;
 }
 int Minimum(int n, int a[])
