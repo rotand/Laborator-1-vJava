@@ -41,23 +41,10 @@ public class Main {
 
                 break;
             case 3:
-                System.out.println("\n Introduceti Inceputul apoi Sfirsitul Vectorului: \t");
-                ArrayList<Integer> Mediu = createFavorabil();
-                // Comanda care randomeaza lista "Collections.shuffle(list);"
-                Collections.shuffle(Mediu);
-                System.out.println(Mediu);
-                System.out.println("\nIntroduceti numarul catat:\t");
-                String cautatS = reader.readLine();
-                Integer cautat = Integer.parseInt(cautatS);
-                for (int i = 0; i < Mediu.size(); i++) {
-                    contor++;
-                    if (Mediu.get(i) == cautat)
-                        System.out.println("Sau parcurs: " + contor + " cautari");
-                }
+              
                 break;
             case 4:
-                Mediu = createRandom();
-                System.out.println(Mediu);
+
                 break;
             default:
                 break;
@@ -184,4 +171,6 @@ public class Main {
         long msDelay = newTime.getTime() - currentTime.getTime();
         System.out.println("Timpul parcurs a sortarii Secventiale este: " + msDelay + " ms" + "\nAu fost parcurse: " + contor + " operatii");
     }
+
+
 }
