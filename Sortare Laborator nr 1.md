@@ -1,4 +1,10 @@
-package com.company;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package analiza.sortare.pkg1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +25,8 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("0: Iesre" + "\n1:Sortarea dupa metoda Bulelor" + "\n2:Sortarea dupa metoda Selectiei " + "\n3:Sortarea dupa metoda Quick Sort" + "\n4: Vector Random");
+        System.out.println("0: Iesre" + "\n1:Sortarea dupa metoda Bulelor" + "\n2:Sortarea dupa metoda Selectiei " + 
+                "\n3:Sortarea dupa metoda Quick Sort" + "\n4: Cautare Secventiala Clasica" + "\n5:Secvential intrun Vector Ordonat " + "\n6: Cautare Binara inrun vector ordonat");
         System.out.println("\nIntroduceti operatiea dorita :\t");
         String keyS = reader.readLine();
         int key = Integer.parseInt(keyS);
@@ -44,8 +51,22 @@ public class Main {
               
                 break;
             case 4:
-
+                    System.out.println("Cautare secventiala clasica");
+                    ArrayList<Integer> SecventialaClasica = createRandom();
+                    System.out.println("Vectorul Secvential Clasic");
+                    System.out.println(SecventialaClasica);
+                    System.out.println("Introduceti nr cautat");
+                     String keeS = reader.readLine();
+                    int kee = Integer.parseInt(keeS);
+                    KeySearch (SecventialaClasica, kee);
                 break;
+                
+            case 5:
+                System.out.println("Secventiala intrun vector ordonat");
+                ArrayList<Integer> SecventialOrdonat =createFavorabil();
+                System.out.println(SecventialOrdonat);
+                break;
+                
             default:
                 break;
         }
@@ -58,16 +79,14 @@ public class Main {
 
         // Introducerea inceputului vectorului
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String inceputS = reader.readLine();
-        int inceput = Integer.parseInt(inceputS);
-
+        System.out.println("Introduceti marimea vectorului");
         // Introducerea Sfirsitului vectorului
         String sfirsitS = reader.readLine();
         int sfirsit = Integer.parseInt(sfirsitS);
 
         //Inscrierea in vector a nr
-        for (int i = inceput; i <= sfirsit; i++) {
-
+        for (int i = 0; i <= sfirsit; i++) {
+               
             result.add(i);
 
         }
@@ -172,5 +191,15 @@ public class Main {
         System.out.println("Timpul parcurs a sortarii Secventiale este: " + msDelay + " ms" + "\nAu fost parcurse: " + contor + " operatii");
     }
 
-
+   public static int KeySearch (ArrayList<Integer> data, int key){
+       int contor = 1;
+       for (int i = 0; i < data.size(); i++) {
+           if(key==data.get(i))
+                    System.out.println(contor);
+                else
+                    contor++;
+           
+       }
+       return 0;
+   }
 }
